@@ -1,3 +1,8 @@
-const msg= "Node me";
-console.log("Message:", msg);
 
+
+const date= Date.now;
+
+console.log(date
+
+);
+console.log("node");
