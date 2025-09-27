@@ -30,33 +30,31 @@ app.use(
 
 
 app.get('/', (req, res) =>{
-  res.status(200).json({message: 'base route is here'})
+  res.status(200).json({message: 'Base route is here'})
 });
 
 app.get('/notes', (req, res) =>{
   res.status(200).json({message: "Retrieved all notes. That is notes route"})
 });
 
-app.get('/test-error', () => {
+app.get('/test-error', (req, res) => {
   throw new Error('Simulated server error');
 });
 
 app.get('/notes/:noteId', (req, res) => {
   const { noteId } = req.params;
-  res.status(200).json({ "Retrieved note with ID:": noteId});
+  res.status(200).json({  message: `Retrieved note with ID: ${noteId}`});
 });
 
 app.use((req,res)=>{
   res.status(404).json({message: 'Route not found'});
 });
 
-app.use((err, req, res, next) =>{
-  console.error('Error:', err.message);
-  res.status(500).json({
-    message: 'Internal Server Error',
-    error: err.message,
-  });
-});
+app.use((err, req, res, next) => {
+	res.status(500).json({
+		message: err.message,
+	})
+})
 
 app.listen(PORT, () =>{
   console.log(`server is on: ${PORT}`)
