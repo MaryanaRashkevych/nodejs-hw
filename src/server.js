@@ -2,8 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from "helmet";
 import 'pino-pretty';
-import {connectMongoDB}  from '../src/db/connectMongoDB.js'
-import notesRoutes from './routes/notesRoutes.js'
+import dotenv
+import {connectMongoDB}  from '../src/db/connectMongoDB.js';
+import notesRoutes from './routes/notesRoutes.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { logger } from './middleware/logger.js';
