@@ -53,15 +53,15 @@ res.status(200).json(user);
   if (sessionId){
     await Session.deleteOne({_id: sessionId});
   }
-res.clearCookie("accessToken"),
-res.clearCookie("refreshToken"),
-res.clearCookie("sessionId")
+res.clearCookie("accessToken");
+res.clearCookie("refreshToken");
+res.clearCookie("sessionId");
 
 res.status(204).send()
  }
 
 
- export const refreshSession = async(req, res) =>{
+ export const refreshUserSession = async(req, res) =>{
 
  const session = await Session.findOne({
     _id: req.cookies.sessionId,
