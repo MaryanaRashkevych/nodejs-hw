@@ -1,14 +1,3 @@
-// У файлі src/models/user.js створіть модель User із такими властивостями:
-
-// username — рядок, не обов’язкове поле, з параметром trim: true;
-// email — рядок, унікальне, обов’язкове, з параметром trim: true;
-// password — рядок, обов’язкове.
-
-// Для автоматичного створення полів createdAt та updatedAt, використовуйте параметр timestamps: true при створенні моделі.
-
-// Додайте до схеми userSchema метод toJSON, щоб видаляти пароль із об'єкта користувача перед відправкою у відповідь.
-
-// Створіть хук pre('save'), щоб за замовчуванням встановлювати username таким самим, як email, при створенні користувача
 
 import { Schema, model } from "mongoose";
 
@@ -29,6 +18,11 @@ password:{
   type: String,
   required: true,
 },
+ avatar: {
+      type: String,
+      required: false,
+      default: "<https://ac.goit.global/fullstack/react/default-avatar.jpg>",
+    },
 },
 {
 timestamps: true,
